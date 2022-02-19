@@ -1,0 +1,41 @@
+package configuration;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+@EnableWebMvc
+@ComponentScan(basePackages = "controller")
+@Configuration
+public class mvcConfig implements WebMvcConfigurer {
+
+	@Bean
+	public InternalResourceViewResolver resolver() {
+		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+		resolver.setPrefix("/");
+		resolver.setSuffix(".jsp");
+		return resolver;
+	}
+
+	//click derecho, source, override method, addviewcontroller
+	//Registro de navegaciones estaticas
+	@Override
+	public void addViewControllers(ViewControllerRegistry registry) {
+		
+		registry.addViewController("/").setViewName("Inicio");
+		registry.addViewController("toInicio").setViewName("Inicio");
+		registry.addViewController("toListado").setViewName("ListadoContactos");
+	}
+
+	//Recursos estaticos (imagenes, css)
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+	
+		registry.addResourceHandler("/*").addResourceLocations("/");
+	}
+}
