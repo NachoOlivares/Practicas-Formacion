@@ -1,0 +1,19 @@
+server:
+  port: 8500
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: root
+    url: jdbc:mysql://localhost:3306/cursosFormacion?serverTimezone=UTC
+    username: root
+  jpa:
+    hibernate:
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  application:
+    name: servicio-cursos
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
