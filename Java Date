@@ -1,0 +1,27 @@
+package view;
+import java.sql.Date;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+
+public class Fechas {
+
+	public static void main(String[] args) {
+		//fecha actual
+		LocalDate fechactual=LocalDate.now();
+		System.out.println(fechactual);
+		
+		
+		//fecha puntual
+		LocalDate fechapuntual = LocalDate.of(2022, 11, 2);
+		System.out.println(fechapuntual);
+		
+		
+		//fecha a partir de cadena
+		LocalDate fechacadena = LocalDate.parse("2020-10-22");
+		System.out.println(fechacadena);
+		
+		LocalDate fechacadena2 = LocalDate.parse("11/05/2021", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		System.out.println(fechacadena2);
+	}
+
+}
